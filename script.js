@@ -3,9 +3,7 @@ const INTEREST_RATE = 0.07;   // 7%
 function updateAmount(value) {
   document.getElementById("amount").textContent = value;
 
-  // repayment = principal + (principal × interest%)
   const repayment = Math.round(value * (1 + INTEREST_RATE));
-
   document.getElementById("repay").textContent = repayment;
 }
 
@@ -33,18 +31,14 @@ const translations = {
 function switchLang(lang) {
   const t = translations[lang];
 
-  const currentRepay = document.getElementById("repay").textContent;
-
-  document.getElementById("title").innerHTML   = t.title;
-  document.getElementById("desc").innerHTML    = t.desc;
+  document.getElementById("title").innerHTML = t.title;
+  document.getElementById("desc").innerHTML = t.desc;
   document.getElementById("setupLabel").innerText = t.setupLabel;
 
-  document.getElementById("totalLabel").innerHTML =
-        ${t.totalLabel} රු <span id="repay">${currentRepay}</span>;
+  // update repayment label text (without overwriting the <span>)
+  document.getElementById("totalLabel").childNodes[0].textContent = `${t.totalLabel} රු `;
 
-  document.getElementById("interestLabel").innerText =
-        ${t.interestLabel} 7%;
-
+  document.getElementById("interestLabel").innerText = ${t.interestLabel} 7%;
   document.getElementById("apply").innerText = t.apply;
   document.getElementById("login").innerHTML = t.login;
 }
