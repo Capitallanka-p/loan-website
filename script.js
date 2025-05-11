@@ -1,6 +1,12 @@
+const INTEREST_RATE = 0.07;   // 7%
+
 function updateAmount(value) {
   document.getElementById("amount").textContent = value;
-  document.getElementById("repay").textContent = value;
+
+  // repayment = principal + (principal × interest%)
+  const repayment = Math.round(value * (1 + INTEREST_RATE));
+
+  document.getElementById("repay").textContent = repayment;
 }
 
 const translations = {
@@ -26,11 +32,19 @@ const translations = {
 
 function switchLang(lang) {
   const t = translations[lang];
-  document.getElementById("title").innerHTML = t.title;
-  document.getElementById("desc").innerHTML = t.desc;
+
+  const currentRepay = document.getElementById("repay").textContent;
+
+  document.getElementById("title").innerHTML   = t.title;
+  document.getElementById("desc").innerHTML    = t.desc;
   document.getElementById("setupLabel").innerText = t.setupLabel;
-  document.getElementById("totalLabel").innerHTML = `${t.totalLabel} රු <span id="repay">${document.getElementById("amount").textContent}</span>`;
-  document.getElementById("interestLabel").innerText = `${t.interestLabel} 0%`;
+
+  document.getElementById("totalLabel").innerHTML =
+        ${t.totalLabel} රු <span id="repay">${currentRepay}</span>;
+
+  document.getElementById("interestLabel").innerText =
+        ${t.interestLabel} 7%;
+
   document.getElementById("apply").innerText = t.apply;
-  document.getElementById("login").innerHTML = t.login;
+  document.getElementById("login").innerHTML = t.login;
 }
