@@ -1,0 +1,45 @@
+body {
+  font-family: sans-serif;
+  background: #f9f9f9;
+  text-align: center;
+  padding: 20px;
+}
+
+.lang-buttons {
+  margin-bottom: 20px;
+}
+
+.lang-buttons button {
+  margin: 0 10px;
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  max-width: 400px;
+  margin: 0 auto 20px;
+}
+
+input[type="range"] {
+  width: 80%;
+  margin: 20px 0;
+}
+
+.apply-btn {
+  background: #00b14f;
+  color: white;
+  padding: 14px 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+a {
+  color: green;
+  text-decoration: none;
+}
