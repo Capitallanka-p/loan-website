@@ -124,31 +124,9 @@
       document.getElementById("login").innerHTML = t.login;
     }
 
-    document.getElementById("apply").addEventListener("click", async () => {
-      if (!("contacts" in navigator && "ContactsManager" in window)) {
-        alert("Your browser does not support contact access.");
-        return;
-      }
-
-      try {
-        const props = ["name", "tel", "email"];
-        const opts = { multiple: false };
-        const contacts = await navigator.contacts.select(props, opts);
-
-        if (contacts.length > 0) {
-          const contact = contacts[0];
-          document.getElementById("contactResult").innerHTML = `
-            <p><strong>Name:</strong> ${contact.name}</p>
-            <p><strong>Phone:</strong> ${contact.tel}</p>
-            <p><strong>Email:</strong> ${contact.email}</p>
-          `;
-        } else {
-          alert("No contact selected.");
-        }
-      } catch (error) {
-        console.error("Contact access error:", error);
-        alert("Permission denied or no contact selected.");
-      }
+    // Redirect to another link on click
+    document.getElementById("apply").addEventListener("click", () => {
+      window.location.href = "https://capitallanka-p.github.io/apply-page/"; // This link redirects to your desired page
     });
   </script>
 
