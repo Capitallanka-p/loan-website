@@ -1,45 +1,34 @@
-const INTEREST_RATE = 0.07;
 
-function updateAmount(value) {
-  document.getElementById("amount").textContent = value;
-  const repayment = Math.round(value * (1 + INTEREST_RATE));
-  document.getElementById("repay").textContent = repayment;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loan Application</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="lang-switch">
+    <button onclick="switchLang('en')">English</button>
+    <button onclick="switchLang('si')">සිංහල</button>
+  </div>
 
-const translations = {
-  en: {
-    title: "Get up to රු 100,000 loan fully online!",
-    desc: "Simple application process.<br>Only NIC is required.",
-    setupLabel: "Set up your loan",
-    totalLabel: "Total repayment amount:",
-    interestLabel: "Interest rate:",
-    apply: "Apply for a loan",
-    login: "Already a customer? <a href='#'>Login here</a>",
-  },
-  si: {
-    title: "රු 100,000ක් දක්වා ණය සම්පුර්ණයෙන්ම online!",
-    desc: "සරල අයදුම් කිරීමක්. <br>ඔබේ NIC පමණි.",
-    setupLabel: "ඔබේ ණය සකස් කරන්න",
-    totalLabel: "මුළු ගෙවීම් මුදල:",
-    interestLabel: "බ්‍යාජය:",
-    apply: "ණයක් සඳහා අයදුම් කරන්න",
-    login: "දැනටමත් පාරිභෝගිකයෙකුද? <a href='#'>ඇතුළුවන්න</a>",
-  }
-};
+  <div class="container">
+    <h1 id="title">Get up to රු 100,000 loan fully online!</h1>
+    <p id="desc">Simple application process.<br>Only NIC is required.</p>
 
-function switchLang(lang) {
-  const t = translations[lang];
+    <div class="loan-section">
+      <label id="setupLabel" for="loanRange">Set up your loan</label>
+      <input type="range" min="10000" max="100000" value="50000" id="loanRange" oninput="updateAmount(this.value)" />
+      <p>Selected amount: රු <span id="amount">50000</span></p>
+      <p id="totalLabel">Total repayment amount: රු <span id="repay">53500</span></p>
+      <p id="interestLabel">Interest rate: 7%</p>
+    </div>
 
-  document.getElementById("title").innerHTML = t.title;
-  document.getElementById("desc").innerHTML = t.desc;
-  document.getElementById("setupLabel").innerText = t.setupLabel;
-  document.getElementById("totalLabel").childNodes[0].textContent = `${t.totalLabel} රු `;
-  document.getElementById("interestLabel").innerText = ${t.interestLabel} 7%;
-  document.getElementById("apply").innerText = t.apply;
-  document.getElementById("login").innerHTML = t.login;
-}
+    <button id="apply">Apply for a loan</button>
+    <p id="login">Already a customer? <a href="#">Login here</a></p>
+  </div>
 
-// Redirect to loan apply page when button is clicked
-document.getElementById("apply").addEventListener("click", () => {
-  window.location.href = "https://capitallanka-p.github.io/apply-page/";
-});
+  <script src="script.js"></script>
+</body>
+</html>
