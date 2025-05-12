@@ -1,3 +1,4 @@
+
 const INTEREST_RATE = 0.07;
 
 function updateAmount(value) {
@@ -34,12 +35,7 @@ function switchLang(lang) {
   document.getElementById("desc").innerHTML = t.desc;
   document.getElementById("setupLabel").innerText = t.setupLabel;
   document.getElementById("totalLabel").childNodes[0].textContent = `${t.totalLabel} රු `;
-  document.getElementById("interestLabel").innerText = ${t.interestLabel} 7%;
+  document.getElementById("interestLabel").innerText = `${t.interestLabel} 7%`;
   document.getElementById("apply").innerText = t.apply;
   document.getElementById("login").innerHTML = t.login;
 }
-
-// Redirect to loan apply page when button is clicked
-document.getElementById("apply").addEventListener("click", () => {
-  window.location.href = "https://capitallanka-p.github.io/apply-page/";
-});
