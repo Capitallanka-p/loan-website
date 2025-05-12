@@ -1,30 +1,33 @@
-let langData = {
-  en: {
-    title: "Get up to රු 100,000 loan fully online!",
-    desc: "Simple application process.<br>Only NIC is required.",
-    setupLabel: "Set up your loan",
-    totalLabel: "Total repayment amount: රු",
-    interestLabel: "Interest rate: ",
-    applyBtn: "Apply for a loan",
-    login: "Already a customer? <a href='#'>Login here</a>",
-  },
-  si: {
-    title: "රු 100,000 ක ණය සම්පූර්ණයෙන්ම අන්තර්ජාලය හරහා!",
-    desc: "සරල අයදුම් ක්‍රියාවලිය.<br>වෙනත් කිසිවක් අවශ්‍ය නොවේ.",
-    setupLabel: "ඔබගේ ණය සකස් කරන්න",
-    totalLabel: "එකතු කළ මුදල: රු",
-    interestLabel: "පොලිය: ",
-    applyBtn: "ඇයදුම් කරන්න",
-    login: "පෙර ගනුදෙනුකරුද? <a href='#'>මෙතැනින් පණිවිඩයක් යවන්න</a>",
-  }
-};
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Loan App</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="lang-buttons">
+    <button onclick="switchLang('en')">English</button>
+    <button onclick="switchLang('si')">සිංහල</button>
+  </div>
 
-function switchLang(lang) {
-  document.getElementById("title").innerHTML = langData[lang].title;
-  document.getElementById("desc").innerHTML = langData[lang].desc;
-  document.getElementById("setupLabel").innerHTML = langData[lang].setupLabel;
-  document.getElementById("totalLabel").innerHTML = langData[lang].totalLabel;
-  document.getElementById("interestLabel").innerHTML = langData[lang].interestLabel + document.getElementById("interestRate").textContent;
-  document.getElementById("apply").innerHTML = langData[lang].applyBtn;
-  document.getElementById("login").innerHTML = langData[lang].login;
-}
+  <h1 id="title">Get up to රු 100,000 loan fully online!</h1>
+  <p id="desc">Simple application process.<br>Only NIC is required.</p>
+
+  <div class="card">
+    <h3 id="setupLabel">Set up your loan</h3>
+    <h2>රු <span id="amount">10000</span></h2>
+    <input type="range" min="3000" max="100000" value="10000" oninput="updateAmount(this.value)" />
+    <div class="info">
+      <p id="totalLabel">Total repayment amount: රු <span id="repay">10000</span></p>
+      <p id="interestLabel">Interest rate: 0%</p>
+    </div>
+  </div>
+
+  <button class="apply-btn" id="apply">Apply for a loan</button>
+  <p id="login">Already a customer? <a href="#">Login here</a></p>
+
+  <script src="script.js"></script>
+</body>
+</html>
