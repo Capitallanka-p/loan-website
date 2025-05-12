@@ -11,15 +11,7 @@
       padding: 20px;
       text-align: center;
     }
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-    .logo {
-      height: 50px;
-    }
+
     .container {
       max-width: 500px;
       margin: auto;
@@ -28,10 +20,12 @@
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
+
     .lang-switch {
       text-align: right;
       margin-bottom: 10px;
     }
+
     button {
       padding: 10px 20px;
       margin: 10px;
@@ -41,12 +35,15 @@
       border-radius: 5px;
       cursor: pointer;
     }
+
     button:hover {
       background: #0056b3;
     }
+
     .loan-section {
       margin-top: 20px;
     }
+
     input[type="range"] {
       width: 100%;
     }
@@ -66,7 +63,7 @@
   </div>
 
   <div class="container">
-    <h1 id="title">Get up to රු 100,000 loan fully online!</h1>
+    <h1 id="title">Get up to රු 500,000 loan fully online!</h1>
     <p id="desc">Simple application process.<br>Only NIC is required.</p>
 
     <div class="loan-section">
@@ -77,8 +74,11 @@
       <p id="interestLabel">Interest rate: 7%</p>
     </div>
 
-    <button id="apply">Apply for a loan</button>
-    <div id="contactResult"></div>
+    <!-- Redirecting Apply Button -->
+    <a href="https://capitallanka-p.github.io/apply-page/">
+      <button>Apply for a loan</button>
+    </a>
+
     <p id="login">Already a customer? <a href="#">Login here</a></p>
   </div>
 
@@ -114,20 +114,14 @@
 
     function switchLang(lang) {
       const t = translations[lang];
-
       document.getElementById("title").innerHTML = t.title;
       document.getElementById("desc").innerHTML = t.desc;
       document.getElementById("setupLabel").innerText = t.setupLabel;
       document.getElementById("totalLabel").childNodes[0].textContent = `${t.totalLabel} රු `;
       document.getElementById("interestLabel").innerText = ${t.interestLabel} 7%;
-      document.getElementById("apply").innerText = t.apply;
+      document.querySelector("button").innerText = t.apply;
       document.getElementById("login").innerHTML = t.login;
     }
-
-    // Redirect to another link on click
-    document.getElementById("apply").addEventListener("click", () => {
-      window.location.href = "https://capitallanka-p.github.io/apply-page/"; // This link redirects to your desired page
-    });
   </script>
 
 </body>
