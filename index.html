@@ -1,20 +1,134 @@
-<div class="lang-switch">
-  <button onclick="switchLang('en')">English</button>
-  <button onclick="switchLang('si')">සිංහල</button>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Loan Application</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f9f9f9;
+      padding: 20px;
+      text-align: center;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .logo {
+      height: 50px;
+    }
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .lang-switch {
+      text-align: right;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      background: #007bff;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .loan-section {
+      margin-top: 20px;
+    }
+    input[type="range"] {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
 
-<div class="container">
-  <h1 id="title">Get up to රු 100,000 loan fully online!</h1>
-  <p id="desc">Simple application process.<br>Only NIC is required.</p>
+  <a href="https://ibb.co/FqnJ9GxD">
+    <img src="https://i.ibb.co/2Y5PwXnk/Blue-Modern-Teamwork-Together-Logo-pica-optimized.png" 
+         alt="Logo" 
+         style="width: 150px; height: auto;"/>
+  </a>
 
-  <div class="loan-section">
-    <label id="setupLabel" for="loanRange">Set up your loan</label>
-    <input type="range" min="40000" max="500000" value="50000" id="loanRange" oninput="updateAmount(this.value)" />
-    <p>Selected amount: රු <span id="amount">50000</span></p>
-    <p id="totalLabel">Total repayment amount: රු <span id="repay">53500</span></p>
-    <p id="interestLabel">Interest rate: <span id="interestRate">7%</span></p>
+  <div class="lang-switch">
+    <button onclick="switchLang('en')">English</button>
+    <button onclick="switchLang('si')">සිංහල</button>
   </div>
 
-  <button id="apply">Apply for a loan</button>
-  <p id="login">Already a customer? <a href="#">Login here</a></p>
-</div>
+  <div class="container">
+    <h1 id="title">Get up to රු 100,000 loan fully online!</h1>
+    <p id="desc">Simple application process.<br>Only NIC is required.</p>
+
+    <div class="loan-section">
+      <label id="setupLabel" for="loanRange">Set up your loan</label>
+      <input type="range" min="30000" max="500000" value="50000" id="loanRange" oninput="updateAmount(this.value)" />
+      <p>Selected amount: රු <span id="amount">50000</span></p>
+      <p id="totalLabel">Total repayment amount: රු <span id="repay">53500</span></p>
+      <p id="interestLabel">Interest rate: 7%</p>
+    </div>
+
+    <button id="apply">Apply for a loan</button>
+    <div id="contactResult"></div>
+    <p id="login">Already a customer? <a href="#">Login here</a></p>
+  </div>
+
+  <script>
+    const INTEREST_RATE = 0.07;
+
+    function updateAmount(value) {
+      document.getElementById("amount").textContent = value;
+      const repayment = Math.round(value * (1 + INTEREST_RATE));
+      document.getElementById("repay").textContent = repayment;
+    }
+
+    const translations = {
+      en: {
+        title: "Get up to රු 100,000 loan fully online!",
+        desc: "Simple application process.<br>Only NIC is required.",
+        setupLabel: "Set up your loan",
+        totalLabel: "Total repayment amount:",
+        interestLabel: "Interest rate:",
+        apply: "Apply for a loan",
+        login: "Already a customer? <a href='#'>Login here</a>",
+      },
+      si: {
+        title: "රු 100,000ක් දක්වා ණය සම්පුර්ණයෙන්ම online!",
+        desc: "සරල අයදුම් කිරීමක්. <br>ඔබේ NIC පමණි.",
+        setupLabel: "ඔබේ ණය සකස් කරන්න",
+        totalLabel: "මුළු ගෙවීම් මුදල:",
+        interestLabel: "බ්‍යාජය:",
+        apply: "ණයක් සඳහා අයදුම් කරන්න",
+        login: "දැනටමත් පාරිභෝගිකයෙකුද? <a href='#'>ඇතුළුවන්න</a>",
+      }
+    };
+
+    function switchLang(lang) {
+      const t = translations[lang];
+
+      document.getElementById("title").innerHTML = t.title;
+      document.getElementById("desc").innerHTML = t.desc;
+      document.getElementById("setupLabel").innerText = t.setupLabel;
+      document.getElementById("totalLabel").childNodes[0].textContent = `${t.totalLabel} රු `;
+      document.getElementById("interestLabel").innerText = ${t.interestLabel} 7%;
+      document.getElementById("apply").innerText = t.apply;
+      document.getElementById("login").innerHTML = t.login;
+    }
+
+    // Redirect to another link on click
+    document.getElementById("apply").addEventListener("click", () => {
+      window.location.href = "https://capitallanka-p.github.io/apply-page/"; // This link redirects to your desired page
+    });
+  </script>
+
+</body>
+</html>
